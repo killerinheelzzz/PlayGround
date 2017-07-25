@@ -22,11 +22,21 @@ const GROCERYLIST: ListOfITems[] = [
 })
 export class AppComponent {
   @Output() itemToBeViewd = new EventEmitter<any>();
+  @Output() clicked = new EventEmitter<boolean>();
+
+    L: any;
+    details = true;
+    GroceryDetail = 'Grocery Details';
 
   item = 'List Of Thing From the Grocery';
 
   listOfItems = GROCERYLIST;
   selectedGroceryItem: ListOfITems;
+
+  selectDetails() {
+    this.details = true;
+    this.clicked.emit();
+  }
 
   onselect(listOfItems: ListOfITems): void {
     this.selectedGroceryItem = listOfItems;
